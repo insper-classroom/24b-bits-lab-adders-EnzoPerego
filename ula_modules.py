@@ -29,6 +29,9 @@ def fullAdder(a, b, c, soma, carry):
 
 @block
 def adder2bits(x, y, soma, carry):
+    c = Signal(bool(0))
+    ha = halfAdder(x[0], y[0], soma[0], c)
+    fa = fullAdder(x[1], y[1], c, soma[1], carry)
     return instances()
 
 
