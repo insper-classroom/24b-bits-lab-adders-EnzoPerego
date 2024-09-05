@@ -11,7 +11,8 @@ from myhdl import *
 def halfAdder(a, b, soma, carry):
     @always_comb
     def comb():
-        pass
+        soma.next = a ^ b
+        carry.next = a and b
 
     return instances()
 
@@ -20,7 +21,8 @@ def halfAdder(a, b, soma, carry):
 def fullAdder(a, b, c, soma, carry):
     @always_comb
     def comb():
-        pass
+        soma.next = a ^ b ^ c
+        carry.next = ((not a) & b & c) | (a & (not b) & c) | (a & b & (not c)) | (a & b & c)
 
     return instances()
 
